@@ -7,6 +7,7 @@ public class Main {
         int[] dp = new int[n+1]; //점수 최댓값
         int[] score = new int[n+1]; //점수
 
+        //점수 받기 (1부터. 시작은 점수 없음)
         for(int i=1 ; i<=n ; i++) {
             score[i] = sc.nextInt();
         }
@@ -21,6 +22,10 @@ public class Main {
         }
 
         for(int i=4 ; i<=n ; i++) {
+            /*
+                dp[i] = Math.max(score[i-2] + score[i], score[i-3] + score[i-1] + score[i])
+                는 단순 점수만 더할 뿐 dp(누적 최댓값)을 더하지 않아서 오답임
+            */ 
             dp[i] = Math.max(dp[i-2]+score[i], dp[i-3]+score[i-1]+score[i]) ;
         }
 
